@@ -1,0 +1,80 @@
+public class Calindar {
+
+int year=0;int count=0;int week=0;
+   public void readInput()
+    {System.out.println("Please enter a year:");
+     year=SavitchIn.readInt();
+     }
+   public boolean years(int year)
+   {boolean dayIs366=true;
+   if((year%400==0)||(year%4==0&&year%100!=0))
+   dayIs366=true;
+   else
+    dayIs366=false;
+   return dayIs366;
+   }
+   public int firstDay(int year)
+{if(year>2009)
+    {for(int i=2009;i<=year;i++)
+       {if (years(i))
+       count=count+366;
+        else
+       count=count+365;}
+  week=(count%7+4)%7;
+    }
+else if(year==2009)
+    week=4;
+else
+{for(int i=year;i<2010;i++)
+     {if(years(i))
+        count=count+366;
+     else
+      count=count+365;
+      }
+week=(11-count%7)%7;
+if(week==0)
+  week=7;
+else;
+}
+    return week;
+}
+   public void readOutput()
+   {week=firstDay(year);
+   String[] name={"Mon","Tue","Mar","Apr","May","Jun","Jul","Agu","Sept","Oct","Nov","Dec"};
+    if(!years(year))
+    {int[] ew={week,(week+3)%7,(week+3)%7,(week+6)%7,(week+1)%7,(week+4)%7,(week+6)%7,(week+2)%7,(week+5)%7,week,(week+3)%7,(week+5)%7};
+     int[] mo={31,28,31,30,31,30,31,31,30,31,30,31};
+    System.out.println("                       the year "+year);
+   for(int index=0;index<12;index++)
+   {   System.out.println("                        "+name[index]);
+   System.out.println("Mon     Tue     Wen     Thr     Fri     Sar     Sun");
+   for(int i=1;i<=(8*ew[index]);i++)
+     System.out.print(" ");
+       for(int i=1;i<=mo[index];i++)
+     {if (i<10)
+        System.out.print(i+"       ");
+       else
+        System.out.print(i+"      ");
+        if((ew[index]+i)%7==0)
+         System.out.println(" ");}
+   System.out.println(" ");}
+  }
+   else
+    System.out.println("                       the year "+year);
+   {   int[] ew={week,(week+3)%7,(week+4)%7,week,(week+2)%7,(week+5)%7,(week+7)%7,(week+3)%7,(week+6)%7,(week+1)%7,(week+4)%7,(week+6)%7};
+   int[] mo={31,29,31,30,31,30,31,31,30,31,30,31};
+for(int index=0;index<12;index++)
+{    System.out.println("                        "+name[index]);
+   System.out.println("Mon     Tue     Wen     Thr     Fri     Sar     Sun");
+for(int i=1;i<=(8*ew[index]);i++)
+   System.out.print(" ");
+  for(int i=1;i<=mo[index];i++)
+   {if (i<10)
+    System.out.print(i+"       ");
+   else
+   System.out.print(i+"      ");
+      if((ew[index]+i)%7==0)
+       System.out.println(" ");}
+  System.out.println(" ");}
+}  
+    }
